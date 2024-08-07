@@ -21,11 +21,11 @@ const Login = () => {
       if (res.user) {
         navigate("/");
         Swal.fire({
-          position: "top-end",
+          position: "top-middle",
           icon: "success",
           title: "Your account  logged",
           showConfirmButton: false,
-          timer: 1500,
+          timer: 1000,
         });
 
         form.reset()

@@ -14,7 +14,6 @@ const MovieRow = ({ title, url }) => {
   console.log(movies);
     
    const slide =(offset)=>{
-
     const slider = document.getElementById('slider' + rowId)
      slider.scrollLeft = slider.scrollLeft + offset;
    } 

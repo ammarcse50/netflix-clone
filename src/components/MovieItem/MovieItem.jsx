@@ -5,10 +5,12 @@ import useAuth from "../../hooks/useAuth";
 import { db } from "../../../Firebase/firebase.config";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const MovieItem = ({ movie }) => {
   const [like, setLike] = useState(false);
   const { title, backdrop_path, poster_path } = movie;
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const markFavMovie = async () => {
     const userEmail = user?.email;
@@ -16,17 +18,17 @@ const MovieItem = ({ movie }) => {
       const userDoc = doc(db, "users", userEmail);
       setLike(!like);
       await updateDoc(userDoc, {
-        favShows: arrayUnion({...movie})
+        favShows: arrayUnion({ ...movie }),
       });
-    }
-    else{
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Please Login!!",
-            showConfirmButton: false,
-            timer: 1500
-          });
+    } else {
+      navigate("/login");
+      Swal.fire({
+        position: "top-middle",
+        icon: "success",
+        title: "Please Login!",
+        showConfirmButton: false,
+        timer: 1000,
+      });
     }
   };
   return (
@@ -43,7 +45,7 @@ const MovieItem = ({ movie }) => {
         </p>
         <p onClick={markFavMovie} className="cursor-pointer">
           {like ? (
-            <FaHeart  size={20} className="absolute top-2 left-2"></FaHeart>
+            <FaHeart size={20} className="absolute top-2 left-2"></FaHeart>
           ) : (
             <FaRegHeart size={20} className="absolute top-2 left-2" />
           )}

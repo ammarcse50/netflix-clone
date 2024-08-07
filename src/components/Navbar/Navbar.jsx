@@ -9,11 +9,11 @@ const Navbar = () => {
 
     await logOut().then(() => {
       Swal.fire({
-        position: "top-end",
+        position: "top-middle",
         icon: "success",
         title: "Your logged out!",
         showConfirmButton: false,
-        timer: 1500,
+        timer: 1000,
       });
     });
   };
