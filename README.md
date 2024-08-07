@@ -1,6 +1,6 @@
-# React + Vite
+# React + Firebase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+We use ReactJs in frontend and firebase in Backend to develop this  basic clone.
 
 Currently, two official plugins are available:
 
